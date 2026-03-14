@@ -7,6 +7,7 @@ interface AuthState {
   isAuthenticated: boolean;
   login: (token: string) => void;
   logout: () => void;
+  register: (token: string) => void;
   setUser: (user: any) => void;
 }
 
@@ -20,6 +21,9 @@ export const useAuthStore = create<AuthState>()(
         set({ token, isAuthenticated: true });
         // In a real app, you'd decode the token to get user info
         // or fetch it from a /profile endpoint.
+      },
+      register: (token) => {
+        set({ token, isAuthenticated: true });
       },
       logout: () => {
         set({ token: null, user: null, isAuthenticated: false });
