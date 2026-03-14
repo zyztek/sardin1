@@ -1,0 +1,1 @@
+# Mem0 MCP Server Setup\n\n- [ ] 1. Create virtualenv: `python -m venv .venv-mem0`\n- [ ] 2. Activate and install: `source .venv-mem0/bin/activate && uv pip install mem0-mcp-server`\n- [ ] 3. Get MEM0_API_KEY from user\n- [ ] 4. Update blackbox_mcp_settings.json with server config\n- [ ] 5. Demo tool (add_memory)
