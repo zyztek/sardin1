@@ -1,9 +1,13 @@
 import subprocess
+from flask import current_app
+from ..models import db, MdmOperation
 from .gemini_service import GeminiService
+from datetime import datetime
 
 class MDMService:
     def __init__(self):
         self.gemini = GeminiService()
+        self.config = current_app.config if current_app else {}
 
     def execute_adb_command(self, command):
         try:
