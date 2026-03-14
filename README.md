@@ -1,24 +1,54 @@
-{
-  "name": "samsung-mdm-dashboard",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev -p 3002",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "14.0.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "axios": "^1.6.0",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "tailwindcss": "^3.3.0",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
-    "typescript": "^5"
-  }
-}
+# Samsung MDM/Knox Removal Tool
+
+## 🚀 Puesta en Marcha Rápida
+
+### Requisitos Previos
+- Windows 10/11 or Linux
+- Node.js 18+ 
+- Python 3.10+
+- Git
+- Android SDK Platform Tools (ADB)
+- Samsung USB Drivers
+
+### Instalación en 5 Minutos
+
+```bash
+# 1. Clonar proyecto
+git clone <repo> samsung-mdm-remover
+cd samsung-mdm-remover
+
+# 2. Setup automático
+scripts\\setup.bat  # Windows
+# or bash scripts/setup.sh (Linux)
+
+# 3. Configurar .env
+cp backend/.env.example backend/.env
+# Edit ADB_PATH, GEMINI_API_KEY
+
+# 4. Iniciar
+docker-compose up -d  # Recommended
+# or manual:
+# cd backend && flask --app app run -p 5000
+# cd frontend && npm run dev -p 3000
+# cd dashboard && npm run dev -p 3002
+```
+
+### Acceso
+- **Frontend**: http://localhost:3000/mdm/dashboard
+- **Backend API**: http://localhost:5000/api/mdm/diagnose  
+- **Admin Dashboard**: http://localhost:3002
+
+## 📱 Uso
+1. Conectar Samsung, USB Debug ON
+2. Diagnose device
+3. AI Fix / Payjoy Remove
+4. Verify
+
+## ⚠️ Legal
+Solo uso legítimo. Ver [docs/LEGAL-MEXICO.md](docs/LEGAL-MEXICO.md)
+
+## Full Docs
+[Implementation](docs/IMPLEMENTATION.md) | [API](docs/API.md) | [Troubleshoot](docs/TROUBLESHOOTING.md)
+
+**México Focus: Payjoy, Knox, Compliance ready.**
 
