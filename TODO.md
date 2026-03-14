@@ -2,12 +2,13 @@
 
 ## Status: In Progress
 
-### Step 1: Project Structure & Docs [TODO]
-- Create `docs/` dir with LEGAL-MEXICO.md, IMPLEMENTATION.md, API.md, TROUBLESHOOTING.md
-- Create `scripts/` with init-db.py, setup.bat
-- Create `.env.example` in backend/
-- Update root README.md with quick start
-- Create `dashboard/` Next.js skeleton
+### Step 1: Project Structure & Docs [DONE ✅]
+- `docs/` created
+- `scripts/` ready
+- backend/.env.example ready
+- README.md updated
+- `dashboard/` skeleton created (run cd dashboard && npm i && npm run dev)"
+
 
 ### Step 2: Backend Models & Config [TODO]
 - Create `backend/app/models/mdm_operation.py` (SQLite: operations log, stats)
