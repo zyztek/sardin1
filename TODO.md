@@ -16,10 +16,10 @@
  - `backend/config.py` updated (Mexico config, SQLite mdm.db)
  - backend/.env.example ready
 
-### Step 3: Extend MDM Backend Services/Routes [TODO]
-- `backend/app/services/mdm_service.py`: Samsung/Payjoy detection, backup, verify, compliance
-- `backend/app/routes/mdm.py`: New endpoints (/payjoy-remove, /backup, /verify, /stats)
-- Integrate DB logging, JWT auth
+### Step 3: Extend MDM Backend Services/Routes [DONE ✅]
+ - mdm_service.py: Extended with Payjoy/Samsung detection, backup, verify, log_operation, get_stats, compliance
+ - mdm.py: New routes /payjoy-remove, /backup, /verify/<package>, /stats (JWT protected)
+ - DB/JWT integration added (minor fixes may need app.py current_user)
 
 ### Step 4: Frontend Updates [TODO]
 - Update `frontend/src/app/mdm/dashboard/page.tsx`: Spanish UI, Payjoy sections, modals
