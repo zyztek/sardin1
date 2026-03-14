@@ -10,11 +10,11 @@
 - `dashboard/` skeleton created (run cd dashboard && npm i && npm run dev)"
 
 
-### Step 2: Backend Models & Config [TODO]
-- Create `backend/app/models/mdm_operation.py` (SQLite: operations log, stats)
-- Update `backend/app/models/__init__.py` to register
-- Update `backend/config.py` for Mexico/Payjoy/compliance
-- Add `backend/.env.example`
+### Step 2: Backend Models & Config [DONE ✅]
+ - `backend/app/models/mdm_operation.py` created
+ - `backend/app/models/__init__.py` updated
+ - `backend/config.py` updated (Mexico config, SQLite mdm.db)
+ - backend/.env.example ready
 
 ### Step 3: Extend MDM Backend Services/Routes [TODO]
 - `backend/app/services/mdm_service.py`: Samsung/Payjoy detection, backup, verify, compliance
