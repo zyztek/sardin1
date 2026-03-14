@@ -37,7 +37,7 @@ class MDMService:
     def remove_package(self, package_name):
         return self.execute_adb_command(f"shell pm uninstall --user 0 {package_name}")
 
-    def ai_assisted_unlock(self, device_info, last_error):
+
         suggested_commands = self.gemini.get_unlock_commands(device_info, last_error)
         results = []
         for cmd in suggested_commands:
