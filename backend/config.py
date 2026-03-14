@@ -11,11 +11,16 @@ class Config:
     TESTING = False
 
     # Database configuration
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://user:password@localhost/sardin_ai_db')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'sqlite:///data/mdm.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # JWT Configuration
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'a_default_jwt_secret_key')
+
+    # MDM Mexico Config
+    MEXICO_COMPLIANCE = os.environ.get('MEXICO_COMPLIANCE', 'false').lower() == 'true'
+    PAYJOY_REGION = os.environ.get('PAYJOY_REGION', 'MX')
+    ADB_PATH = os.environ.get('ADB_PATH', 'adb')
 
     # Celery Configuration
     CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0')
