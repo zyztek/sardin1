@@ -21,11 +21,17 @@ class MDMService:
     def diagnose_device(self):
         model = self.execute_adb_command("shell getprop ro.product.model")
         brand = self.execute_adb_command("shell getprop ro.product.brand")
-        packages = self.execute_adb_command("shell pm list packages -f")
+        packages = self.execute_adb_command("shell pm list packages -f | grep -E 'knox|payjoy|mdm'")
+        payjoy_packages = ["com.payjoy.device", "com.payjoy.mdm", "com.samsung.knox"]
+        detected_mdm = [p for p in payjoy_packages if p in packages.get("output", "")]
+        is_samsung = "samsung" in brand.get("output", "").lower()
         return {
             "model": model.get("output", "").strip(),
             "brand": brand.get("output", "").strip(),
-            "packages": packages.get("output", "").strip()
+            "packages": packages.get("output", "").strip(),
+            "mdm_detected": detected_mdm,
+            "is_samsung": is_samsung,
+            "mdm_type": "payjoy" if "payjoy" in str(packages.get("output", "")) else "knox" if "knox" in str(packages.get("output", "")) else "none"
         }
 
     def remove_package(self, package_name):
