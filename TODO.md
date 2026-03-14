@@ -21,9 +21,9 @@
  - mdm.py: New routes /payjoy-remove, /backup, /verify/<package>, /stats (JWT protected)
  - DB/JWT integration added (minor fixes may need app.py current_user)
 
-### Step 4: Frontend Updates [TODO]
-- Update `frontend/src/app/mdm/dashboard/page.tsx`: Spanish UI, Payjoy sections, modals
-- New components: PayjoyDetector.tsx, ComplianceNotice.tsx
+### Step 4: Frontend Updates [DONE ✅]
+ - Updated mdm/dashboard/page.tsx: Spanish, Compliance modal, PayjoyDetector integration, Backup/Payjoy buttons, new logs
+ - Created ComplianceNotice.tsx, PayjoyDetector.tsx
 
 ### Step 5: Admin Dashboard [TODO]
 - Full `dashboard/` with metrics/reports (reuse API)
