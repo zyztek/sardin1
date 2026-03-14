@@ -16,7 +16,7 @@ const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState<string | null>(null);
   const register = useAuthStore((state) => state.register);
-  const router = useRouter();
+  // const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const RegisterPage: React.FC = () => {
       const response = await api.post('/auth/register', { username, password, email });
       const { access_token } = response.data;
       register(access_token);
-      router.push('/dashboard');
+      // router.push('/dashboard');
     } catch (err: any) {
       const errorMsg = err.response?.data?.msg || 'Registration failed.';
       setError(errorMsg);

@@ -15,7 +15,7 @@ const LoginPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const login = useAuthStore((state) => state.login);
-  const router = useRouter();
+  // const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
       const response = await api.post('/auth/login', { username, password });
       const { access_token } = response.data;
       login(access_token);
-      router.push('/dashboard'); // Redirect to dashboard on successful login
+      // router.push('/dashboard'); // Redirect to dashboard on successful login
     } catch (err: any) {
       const errorMsg = err.response?.data?.msg || 'Login failed. Please check your credentials.';
       setError(errorMsg);
