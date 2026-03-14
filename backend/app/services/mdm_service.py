@@ -41,5 +41,46 @@ class MDMService:
         suggested_commands = self.gemini.get_unlock_commands(device_info, last_error)
         results = []
         for cmd in suggested_commands:
-            results.append({"command": cmd, "result": self.execute_adb_command(cmd)})
+            result = self.execute_adb_command(cmd)
+            results.append({"command": cmd, "result": result})
+        self.log_operation(device_info.get('model'), 'ai_unlock', True, '', current_user.id if current_user else None)
         return results
+
+    def backup_data(self):
+        \"\"\"Backup key data before removal.\"""
+        backup = self.execute_adb_command("shell pm backup -apk -obb -shared -all -f /sdcard/mdm_backup.ab")
+        return backup
+
+    def verify_removal(self, package_name):
+        \"\"\"Verify package removal.\"""
+        check = self.execute_adb_command(f"shell pm list packages | grep {package_name}")
+        success = package_name not in check.get("output", "")
+        return {"success": success, "output": check.get("output", "")}
+
+    def payjoy_remove(self, package_name):
+        if not self.config.get('MEXICO_COMPLIANCE'):
+            return {"success": False, "error": "Mexico compliance required"}
+        backup = self.backup_data()
+        remove = self.remove_package(package_name)
+        verify = self.verify_removal(package_name)
+        self.log_operation(package_name, 'payjoy_remove', remove['success'], str(verify))
+        return {"backup": backup, "remove": remove, "verify": verify}
+
+    def log_operation(self, device_model, operation_type, success, error, user_id=None):
+        op = MdmOperation(
+            device_model=device_model,
+            mdm_type=operation_type,
+            success=success,
+            error=error,
+            user_id=user_id
+        )
+        db.session.add(op)
+        db.session.commit()
+        return op
+
+    def get_stats(self):
+        from sqlalchemy import func
+        total = MdmOperation.query.count()
+        success = MdmOperation.query.filter_by(success=True).count()
+        mexico = MdmOperation.query.filter(MdmOperation.device_model.ilike('%mx%')).count()  # Approx
+        return {"total": total, "success_rate": success/total*100 if total else 0, "mexico_ops": mexico}
