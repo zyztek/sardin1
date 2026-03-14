@@ -6,9 +6,9 @@ import { useAuthStore } from '@/store/authStore';
 import { api } from '@/lib/api';
 
 // Simple UI components for now. Will be replaced with shadcn/ui later.
-const Button = ({ children, ...props }) => <button {...props}>{children}</button>;
-const Input = (props) => <input {...props} />;
-const Label = ({ children, ...props }) => <label {...props}>{children}</label>;
+const Button = ({ children, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement> & { children: React.ReactNode }) => <button {...props}>{children}</button>;
+const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => <input {...props} />;
+const Label = ({ children, ...props }: React.LabelHTMLAttributes<HTMLLabelElement> & { children: React.ReactNode }) => <label {...props}>{children}</label>;
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -49,7 +49,7 @@ const LoginPage: React.FC = () => {
               type="text"
               id="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
               required
               style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}
             />
@@ -60,7 +60,7 @@ const LoginPage: React.FC = () => {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               required
               style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}
             />
