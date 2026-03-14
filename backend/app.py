@@ -5,7 +5,7 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from flask_socketio import SocketIO
 from celery import Celery
-from backend.config import config_by_name
+from config import config_by_name
 
 # Initialize extensions
 db = SQLAlchemy()

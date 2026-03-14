@@ -1,5 +1,5 @@
-from backend.app import db
-from backend.app.models.user import User
+from app import db
+from app.models.user import User
 
 class AuthService:
     @staticmethod

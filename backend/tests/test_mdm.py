@@ -4,7 +4,7 @@ import os
 from unittest.mock import patch, MagicMock
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from backend.app.services.mdm_service import MDMService
+from app.services.mdm_service import MDMService
 
 class TestMDMService(unittest.TestCase):
     def setUp(self):

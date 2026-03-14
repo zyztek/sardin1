@@ -1,5 +1,5 @@
-from backend.app import db
-from backend.app.models.vessel import Vessel
+from app import db
+from app.models.vessel import Vessel
 
 class VesselService:
     @staticmethod

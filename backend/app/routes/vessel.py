@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from backend.app.services.vessel_service import VesselService
-from backend.app.models.vessel import Vessel # For serialization
+from app.services.vessel_service import VesselService
+from app.models.vessel import Vessel # For serialization
 
 vessel_bp = Blueprint('vessel_bp', __name__)
 
